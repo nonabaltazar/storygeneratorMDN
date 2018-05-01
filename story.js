@@ -28,7 +28,8 @@ function temperature() {
         tempF = ((temp * 1.8) + 32).toFixed(2);
         console.log("one");
         // customTemp.value = tempF;
-        temp = tempF + "Degrees Fahrenheit"
+        temp = tempF + "Degrees Fahrenheit";
+        weight = "300 Pounds";
         generateStoryTemp();
         customTemp.value= tempF;
         
@@ -36,16 +37,19 @@ function temperature() {
         temp =  customTemp.value;
         tempC = ((temp - 32) * (5/9)).toFixed(2);
         // customTemp.value = tempC;
-        temp = tempC + "Degrees Celcius"
+        temp = tempC + "Degrees Celcius";
+        weight = "136 kilograms";
         generateStoryTemp();
         customTemp.value=tempC;
         console.log("two");             
     } else if (us.checked==true && customTemp.value =='') {
         temp = "90 Degrees Fahrenheit";
+        weight = "300 Pounds";
         generateStoryTemp();
         console.log("5");
     } else {
-        temp = "34 Degrees Fahrenheit"
+        temp = "34 Degrees Fahrenheit";
+        weight = "136 kilograms";
         generateStoryTemp();
         console.log("6");
     }
@@ -53,11 +57,13 @@ function temperature() {
 
 function temperatureNC(){
     if (us.checked == true && customTemp.value !==''){
-        temp = customTemp.value + " Degrees Fahrenheit"
+        temp = customTemp.value + " Degrees Fahrenheit";
+        weight = "300 Pounds";
         generateStoryTemp();
         return tempF = customTemp.value
             } else if (uk.checked ==true && customTemp.value !==''){
-        temp = customTemp.value + " Degrees Celcius"
+        temp = customTemp.value + " Degrees Celcius";
+        weight = "136 kilograms";
         generateStoryTemp();
         return tempC = customTemp.value;
            }
@@ -110,7 +116,7 @@ function generateFirstStory() {
 function generateStoryTemp() {
     getCustomName();
     story.style.visibility = "visible";
-    story.innerHTML = "It was " + temp + " outside, so " + randomCharacter + " went for a walk. When they got to " + randomStoryPlace + " , they stared in horror for a few moments, then " + name + " saw the whole thing, but was not surprised — " + randomCharacter + " weighs 300 pounds, and it was a hot day.";
+    story.innerHTML = "It was " + temp + " outside, so " + randomCharacter + " went for a walk. When they got to " + randomStoryPlace + " , they stared in horror for a few moments, then " + name + " saw the whole thing, but was not surprised — " + randomCharacter + "  weighs " + weight +" , and it was a hot day.";
 }
 
 
@@ -118,7 +124,7 @@ function generateStory() {
     getCustomName();
     temperature();
     story.style.visibility = "visible";
-    story.innerHTML = "It was " + temp + " outside, so " + randomCharacter + " went for a walk. When they got to " + randomStoryPlace + " , they stared in horror for a few moments, then " + name + " saw the whole thing, but was not surprised — " + randomCharacter + " weighs 300 pounds, and it was a hot day.";
+    story.innerHTML = "It was " + temp + " outside, so " + randomCharacter + " went for a walk. When they got to " + randomStoryPlace + " , they stared in horror for a few moments, then " + name + " saw the whole thing, but was not surprised — " + randomCharacter + " weighs " + weight +" , and it was a hot day.";
 }
 
 
@@ -133,11 +139,11 @@ function eventHandler(e) {
 
 
 window.addEventListener("load", generateFirstStory)
-nameBtn.addEventListener("click", temperature);
+nameBtn.addEventListener("click", generateStoryTemp);
 random.addEventListener("click", generateNewStory);
 // uk.addEventListener("click", temperature);
 // us.addEventListener("click", temperature);
 window.addEventListener("keypress", eventHandler)
 customTempBtn.addEventListener("click", temperatureNC);
 uk.onchange = temperature;
-us.onchange = temperature;MKDIR
+us.onchange = temperature;
